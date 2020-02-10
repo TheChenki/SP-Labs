@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <Windows.h>
-#include <float.h>
 int main() 
 {
 	printf("\tSHORT\t\tSIZE: %iB\t\tMIN: %i\t\tMAX: %i\n",		sizeof(SHORT), -32768, 32767);
@@ -22,6 +21,6 @@ int main()
 	printf("\tLPCWSTR\t\tSIZE: %iB\t\tMIN: %u\t\t\tMAX: %u\n",	sizeof(LPCWSTR), 0, 4294967295);
 	printf("\tLPTSTR\t\tSIZE: %iB\t\tMIN: %u\t\t\tMAX: %u\n",	sizeof(LPTSTR), 0, 4294967295);
 	printf("\tLPCTSTR\t\tSIZE: %iB\t\tMIN: %u\t\t\tMAX: %u\n",	sizeof(LPCTSTR), 0, 4294967295);
-	bool a = true;
+	system("pause");
 	return 0;
 }
