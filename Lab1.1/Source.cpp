@@ -44,14 +44,14 @@ void FromUnicode(char* path) {
 		if (dwBytes == 0)
 			break;
 
-		//Определение размера строки Unicode
+		//Unicode string length
 		int uLength = MultiByteToWideChar(CP_UTF8, 0, (LPCCH)buffer, dwBytes, NULL, 0);
 		wchar_t* uStr = new wchar_t[uLength];
 		MultiByteToWideChar(CP_UTF8, 0, (LPCCH)buffer, dwBytes, uStr, uLength);
-		//Определение размера строки ASCII
+		//ASCII string length
 		int aLength = WideCharToMultiByte(CP_ACP, 0, uStr, uLength, NULL, 0, NULL, NULL);
-		char* aStr = new char[aLength];
-		//Конечная перекодировка
+		char* aStr = (char*)calloc(aLength, sizeof(char));
+		//Encoding
 		WideCharToMultiByte(CP_ACP, 0, uStr, uLength, aStr, aLength, NULL, NULL);
 
 		if (!WriteFile(writeFile, aStr, aLength * sizeof(char), &dwBytes, NULL)) {
@@ -78,10 +78,10 @@ void ToUnicode(char* path) {
 		if (dwBytes == 0)
 			break;
 
-		//Определение размера строки Unicode
+		//Unicode string length
 		int uLength = MultiByteToWideChar(CP_UTF8, 0, (LPCCH)buffer, dwBytes, NULL, 0);
-		wchar_t* uStr = new wchar_t[uLength];
-		//Конечная перекодировка
+		wchar_t* uStr = (wchar_t*)calloc(uLength, sizeof(wchar_t));
+		//Encoding
 		MultiByteToWideChar(CP_UTF8, 0, (LPCCH)buffer, dwBytes, uStr, uLength);
 
 		if (!WriteFile(writeFile, uStr, uLength * sizeof(wchar_t), (LPDWORD)&dwBytes, NULL)) {
