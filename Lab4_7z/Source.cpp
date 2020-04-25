@@ -3,6 +3,9 @@
 #include <stdio.h>
 #include <locale.h>
 
+#define ACTION_UNPACK 1
+#define ACTION_PACK 2
+
 LPCSTR unpack_7z = "C:\\Program Files\\7-Zip\\7z.exe e ";
 LPCSTR pack_7z = "C:\\Program Files\\7-Zip\\7z.exe a -tzip ";
 
@@ -24,7 +27,7 @@ int main()
 
 		switch (i)
 		{
-			case 1:
+			case ACTION_UNPACK:
 			{
 				LPSTR unpackFile = new CHAR[MAX_PATH];
 				LPSTR resultFile = new CHAR[MAX_PATH];
@@ -40,7 +43,7 @@ int main()
 				unpack_files(unpackFile,resultFile);
 				break;
 			}
-			case 2:
+			case ACTION_PACK:
 			{
 				LPSTR packFile = new CHAR[MAX_PATH];
 				LPSTR resultFile = new CHAR[MAX_PATH];
